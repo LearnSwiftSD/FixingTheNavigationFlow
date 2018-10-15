@@ -8,20 +8,70 @@
 
 /* Begin PBXBuildFile section */
 		AA022AFE2165710F009F9F75 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022AFD2165710F009F9F75 /* AppDelegate.swift */; };
-		AA022B002165710F009F9F75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022AFF2165710F009F9F75 /* ViewController.swift */; };
 		AA022B032165710F009F9F75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA022B012165710F009F9F75 /* Main.storyboard */; };
 		AA022B0521657110009F9F75 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA022B0421657110009F9F75 /* Assets.xcassets */; };
 		AA022B0821657110009F9F75 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA022B0621657110009F9F75 /* LaunchScreen.storyboard */; };
+		AA022B1521657554009F9F75 /* ExSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B1421657554009F9F75 /* ExSpecies.swift */; };
+		AA022B1721657942009F9F75 /* ExPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B1621657942009F9F75 /* ExPlace.swift */; };
+		AA022B1921657C51009F9F75 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B1821657C51009F9F75 /* Place.swift */; };
+		AA022B1B216589E2009F9F75 /* Place+CoreLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B1A216589E2009F9F75 /* Place+CoreLocation.swift */; };
+		AA022B1D21658F83009F9F75 /* NamedPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B1C21658F83009F9F75 /* NamedPlace.swift */; };
+		AA022B1F2165B186009F9F75 /* ExThingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B1E2165B186009F9F75 /* ExThingsTableViewController.swift */; };
+		AA022B212165BB03009F9F75 /* ExSpeciesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B202165BB03009F9F75 /* ExSpeciesService.swift */; };
+		AA022B232165D9CC009F9F75 /* ExPlacesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B222165D9CC009F9F75 /* ExPlacesService.swift */; };
+		AA022B2521660560009F9F75 /* ExPlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B2421660560009F9F75 /* ExPlaceDetailViewController.swift */; };
+		AA022B29216AABB1009F9F75 /* ExSpeciesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B28216AABB1009F9F75 /* ExSpeciesDetailViewController.swift */; };
+		AA022B2D216AB261009F9F75 /* ExThing.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B2C216AB261009F9F75 /* ExThing.swift */; };
+		AA022B2F216BE9FC009F9F75 /* ExSpeciesWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B2E216BE9FC009F9F75 /* ExSpeciesWidgetViewController.swift */; };
+		AA022B31216C1431009F9F75 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B30216C1431009F9F75 /* MapViewController.swift */; };
+		AA022B33216C224F009F9F75 /* AnnotatedPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B32216C224F009F9F75 /* AnnotatedPlace.swift */; };
+		AA022B35216C231E009F9F75 /* AnnotatedPlace+MapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B34216C231E009F9F75 /* AnnotatedPlace+MapKit.swift */; };
+		AA022B37216C96AC009F9F75 /* ExPlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B36216C96AC009F9F75 /* ExPlacesTableViewController.swift */; };
+		AA022B3B216C9AA0009F9F75 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B3A216C9AA0009F9F75 /* SettingsViewController.swift */; };
+		AA022B43216D6141009F9F75 /* ExSpeciesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B42216D6141009F9F75 /* ExSpeciesTableViewController.swift */; };
+		AA022B45216D757A009F9F75 /* ExPlaceDetailInTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B44216D757A009F9F75 /* ExPlaceDetailInTabBarViewController.swift */; };
+		AA022B47216DCC85009F9F75 /* ExThingsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B46216DCC85009F9F75 /* ExThingsSplitViewController.swift */; };
+		AA73B4CF217264B100F7BBF6 /* NoteEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B4CE217264B100F7BBF6 /* NoteEditorViewController.swift */; };
+		AA73B4F12175400300F7BBF6 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B4F02175400300F7BBF6 /* Preferences.swift */; };
+		AAE1A685216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE1A684216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift */; };
+		AAE1A687216E8BF70055FC9A /* ExSpeciesDetailInSplitViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE1A686216E8BF70055FC9A /* ExSpeciesDetailInSplitViewViewController.swift */; };
+		AAE1A689216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE1A688216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift */; };
+		AAE1A68B216FE8100055FC9A /* ExThingsTableViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE1A68A216FE8100055FC9A /* ExThingsTableViewControllerV2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AA022AFA2165710F009F9F75 /* ExThings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExThings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA022AFD2165710F009F9F75 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AA022AFF2165710F009F9F75 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AA022B022165710F009F9F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AA022B0421657110009F9F75 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA022B0721657110009F9F75 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA022B0921657110009F9F75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA022B1421657554009F9F75 /* ExSpecies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExSpecies.swift; sourceTree = "<group>"; };
+		AA022B1621657942009F9F75 /* ExPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExPlace.swift; sourceTree = "<group>"; };
+		AA022B1821657C51009F9F75 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		AA022B1A216589E2009F9F75 /* Place+CoreLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreLocation.swift"; sourceTree = "<group>"; };
+		AA022B1C21658F83009F9F75 /* NamedPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamedPlace.swift; sourceTree = "<group>"; };
+		AA022B1E2165B186009F9F75 /* ExThingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExThingsTableViewController.swift; sourceTree = "<group>"; };
+		AA022B202165BB03009F9F75 /* ExSpeciesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExSpeciesService.swift; sourceTree = "<group>"; };
+		AA022B222165D9CC009F9F75 /* ExPlacesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExPlacesService.swift; sourceTree = "<group>"; };
+		AA022B2421660560009F9F75 /* ExPlaceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExPlaceDetailViewController.swift; path = ExThings/controller/ExPlaceDetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		AA022B28216AABB1009F9F75 /* ExSpeciesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExSpeciesDetailViewController.swift; sourceTree = "<group>"; };
+		AA022B2C216AB261009F9F75 /* ExThing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExThing.swift; sourceTree = "<group>"; };
+		AA022B2E216BE9FC009F9F75 /* ExSpeciesWidgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExSpeciesWidgetViewController.swift; sourceTree = "<group>"; };
+		AA022B30216C1431009F9F75 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		AA022B32216C224F009F9F75 /* AnnotatedPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotatedPlace.swift; sourceTree = "<group>"; };
+		AA022B34216C231E009F9F75 /* AnnotatedPlace+MapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AnnotatedPlace+MapKit.swift"; sourceTree = "<group>"; };
+		AA022B36216C96AC009F9F75 /* ExPlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExPlacesTableViewController.swift; sourceTree = "<group>"; };
+		AA022B3A216C9AA0009F9F75 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		AA022B42216D6141009F9F75 /* ExSpeciesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExSpeciesTableViewController.swift; sourceTree = "<group>"; };
+		AA022B44216D757A009F9F75 /* ExPlaceDetailInTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExPlaceDetailInTabBarViewController.swift; sourceTree = "<group>"; };
+		AA022B46216DCC85009F9F75 /* ExThingsSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExThingsSplitViewController.swift; sourceTree = "<group>"; };
+		AA73B4CE217264B100F7BBF6 /* NoteEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorViewController.swift; sourceTree = "<group>"; };
+		AA73B4F02175400300F7BBF6 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		AAE1A684216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExPlaceDetailInSplitViewViewController.swift; sourceTree = "<group>"; };
+		AAE1A686216E8BF70055FC9A /* ExSpeciesDetailInSplitViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExSpeciesDetailInSplitViewViewController.swift; sourceTree = "<group>"; };
+		AAE1A688216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExThingsTableInSplitViewViewController.swift; sourceTree = "<group>"; };
+		AAE1A68A216FE8100055FC9A /* ExThingsTableViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExThingsTableViewControllerV2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +105,78 @@
 			isa = PBXGroup;
 			children = (
 				AA022AFD2165710F009F9F75 /* AppDelegate.swift */,
-				AA022AFF2165710F009F9F75 /* ViewController.swift */,
 				AA022B012165710F009F9F75 /* Main.storyboard */,
 				AA022B0421657110009F9F75 /* Assets.xcassets */,
 				AA022B0621657110009F9F75 /* LaunchScreen.storyboard */,
+				AA73B4F02175400300F7BBF6 /* Preferences.swift */,
 				AA022B0921657110009F9F75 /* Info.plist */,
+				AA022B11216571B7009F9F75 /* controller */,
+				AA022B0F216571A2009F9F75 /* model */,
+				AA022B10216571AE009F9F75 /* view */,
 			);
 			path = ExThings;
+			sourceTree = "<group>";
+		};
+		AA022B0F216571A2009F9F75 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				AA022B32216C224F009F9F75 /* AnnotatedPlace.swift */,
+				AA022B34216C231E009F9F75 /* AnnotatedPlace+MapKit.swift */,
+				AA022B1621657942009F9F75 /* ExPlace.swift */,
+				AA022B222165D9CC009F9F75 /* ExPlacesService.swift */,
+				AA022B1421657554009F9F75 /* ExSpecies.swift */,
+				AA022B202165BB03009F9F75 /* ExSpeciesService.swift */,
+				AA022B1C21658F83009F9F75 /* NamedPlace.swift */,
+				AA022B2C216AB261009F9F75 /* ExThing.swift */,
+				AA022B1821657C51009F9F75 /* Place.swift */,
+				AA022B1A216589E2009F9F75 /* Place+CoreLocation.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		AA022B10216571AE009F9F75 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		AA022B11216571B7009F9F75 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				AA022B2421660560009F9F75 /* ExPlaceDetailViewController.swift */,
+				AA022B36216C96AC009F9F75 /* ExPlacesTableViewController.swift */,
+				AA022B42216D6141009F9F75 /* ExSpeciesTableViewController.swift */,
+				AA022B28216AABB1009F9F75 /* ExSpeciesDetailViewController.swift */,
+				AA022B2E216BE9FC009F9F75 /* ExSpeciesWidgetViewController.swift */,
+				AA022B1E2165B186009F9F75 /* ExThingsTableViewController.swift */,
+				AAE1A68A216FE8100055FC9A /* ExThingsTableViewControllerV2.swift */,
+				AA022B30216C1431009F9F75 /* MapViewController.swift */,
+				AA73B4CE217264B100F7BBF6 /* NoteEditorViewController.swift */,
+				AA022B3A216C9AA0009F9F75 /* SettingsViewController.swift */,
+				AAE1A68E21715FB60055FC9A /* splitView */,
+				AAE1A68F21715FD90055FC9A /* tabBar */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		AAE1A68E21715FB60055FC9A /* splitView */ = {
+			isa = PBXGroup;
+			children = (
+				AAE1A684216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift */,
+				AAE1A686216E8BF70055FC9A /* ExSpeciesDetailInSplitViewViewController.swift */,
+				AA022B46216DCC85009F9F75 /* ExThingsSplitViewController.swift */,
+				AAE1A688216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift */,
+			);
+			path = splitView;
+			sourceTree = "<group>";
+		};
+		AAE1A68F21715FD90055FC9A /* tabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AA022B44216D757A009F9F75 /* ExPlaceDetailInTabBarViewController.swift */,
+			);
+			path = tabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +250,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA022B002165710F009F9F75 /* ViewController.swift in Sources */,
+				AA022B2521660560009F9F75 /* ExPlaceDetailViewController.swift in Sources */,
+				AA022B37216C96AC009F9F75 /* ExPlacesTableViewController.swift in Sources */,
+				AA022B33216C224F009F9F75 /* AnnotatedPlace.swift in Sources */,
+				AAE1A68B216FE8100055FC9A /* ExThingsTableViewControllerV2.swift in Sources */,
+				AA022B232165D9CC009F9F75 /* ExPlacesService.swift in Sources */,
+				AA022B1721657942009F9F75 /* ExPlace.swift in Sources */,
+				AA022B2D216AB261009F9F75 /* ExThing.swift in Sources */,
+				AAE1A689216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift in Sources */,
+				AA022B1521657554009F9F75 /* ExSpecies.swift in Sources */,
+				AA73B4CF217264B100F7BBF6 /* NoteEditorViewController.swift in Sources */,
+				AA022B29216AABB1009F9F75 /* ExSpeciesDetailViewController.swift in Sources */,
+				AA022B1F2165B186009F9F75 /* ExThingsTableViewController.swift in Sources */,
+				AAE1A685216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift in Sources */,
+				AA022B212165BB03009F9F75 /* ExSpeciesService.swift in Sources */,
+				AA022B1B216589E2009F9F75 /* Place+CoreLocation.swift in Sources */,
+				AAE1A687216E8BF70055FC9A /* ExSpeciesDetailInSplitViewViewController.swift in Sources */,
+				AA022B45216D757A009F9F75 /* ExPlaceDetailInTabBarViewController.swift in Sources */,
+				AA022B35216C231E009F9F75 /* AnnotatedPlace+MapKit.swift in Sources */,
 				AA022AFE2165710F009F9F75 /* AppDelegate.swift in Sources */,
+				AA022B1921657C51009F9F75 /* Place.swift in Sources */,
+				AA73B4F12175400300F7BBF6 /* Preferences.swift in Sources */,
+				AA022B1D21658F83009F9F75 /* NamedPlace.swift in Sources */,
+				AA022B47216DCC85009F9F75 /* ExThingsSplitViewController.swift in Sources */,
+				AA022B43216D6141009F9F75 /* ExSpeciesTableViewController.swift in Sources */,
+				AA022B2F216BE9FC009F9F75 /* ExSpeciesWidgetViewController.swift in Sources */,
+				AA022B31216C1431009F9F75 /* MapViewController.swift in Sources */,
+				AA022B3B216C9AA0009F9F75 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
