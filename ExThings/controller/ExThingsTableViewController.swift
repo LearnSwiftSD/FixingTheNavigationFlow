@@ -13,6 +13,8 @@ import UIKit
 class ExThingsTableViewController: UITableViewController {
     
     // MARK: - Model - Services
+    lazy var exThingsDataSource: Array<Array<ExThing>> = [exPlaces, exSpecies]
+    
     lazy var exPlacesService = (UIApplication.shared.delegate as! AppDelegate).exPlacesService
     lazy var exSpeciesService = (UIApplication.shared.delegate as! AppDelegate).exSpeciesService
     
@@ -23,7 +25,7 @@ class ExThingsTableViewController: UITableViewController {
         }
     }
     
-    // Retrieve the latest authoritative exSpecies data.
+    // Retrieve the latest authoritative exPlaces data.
     var exPlaces: Array<ExPlace> {
         get {
             return exPlacesService.exPlaces
@@ -87,33 +89,24 @@ class ExThingsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        switch segue.identifier {
-
-        // Show ExPlace detail view.
-        case "showExPlaceDetail":
-            if let exPlaceDetailVC = segue.destination as? ExPlaceDetailViewController,
-                let selectedIndex = tableView.indexPathForSelectedRow,
-                dataSource[selectedIndex.section] is Array<ExPlace>
-            {
-                let selectedExPlace = exPlaces[selectedIndex.row]
-                exPlaceDetailVC.exPlace = selectedExPlace
+        if let _ = sender as? UITableViewCell,
+            let selectedIndex = tableView.indexPathForSelectedRow
+        {
+            let selectedExThing = exThingsDataSource[selectedIndex.section][selectedIndex.row]
+            switch selectedExThing {
+                
+            // Show ExPlace detail view.
+            case let selectedExPlace as ExPlace:
+                (segue.destination as? ExPlaceConsumer)?.exPlace = selectedExPlace
+                
+            // Show ExSpecies detail view.
+            case let selectedExSpecies as ExSpecies:
+                (segue.destination as? ExSpeciesConsumer)?.exSpecies = selectedExSpecies
+                
+            default :
+                break
             }
-
-        // Show ExSpecies detail view.
-        case "showExSpeciesDetail":
-            if let exSpeciesDetailViewController = segue.destination as? ExSpeciesDetailViewController,
-                let selectedIndex = tableView.indexPathForSelectedRow,
-                dataSource[selectedIndex.section] is Array<ExSpecies>
-            {
-                let selectedExSpecies = exSpecies[selectedIndex.row]
-                exSpeciesDetailViewController.exSpecies = selectedExSpecies
-            }
-
-        default:
-            break
         }
-
     }
     
 }

@@ -42,3 +42,7 @@ struct ExSpecies: ExThing, Codable, Hashable {
     // Unique ID for this object.
     var uuid: UUID
 }
+
+protocol ExSpeciesConsumer: AnyObject {
+    var exSpecies: ExSpecies? { get set }
+}

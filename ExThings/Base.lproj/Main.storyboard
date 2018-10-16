@@ -46,7 +46,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.18444505333900452" green="0.18048211932182312" blue="0.17622989416122437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="GlW-vQ-jPP" kind="show" identifier="showExPlaceDetail" customClass="TestSegue" customModule="ExThings" customModuleProvider="target" id="kel-DZ-h6p"/>
+                                    <segue destination="GlW-vQ-jPP" kind="show" identifier="showExPlaceDetail" id="kel-DZ-h6p"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="exSpeciesTableViewCell" textLabel="Zj8-ZZ-FfE" imageView="AJx-p5-VLw" style="IBUITableViewCellStyleDefault" id="k1D-tl-C4d">
@@ -660,10 +660,10 @@
             </objects>
             <point key="canvasLocation" x="322" y="1304"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Ex Things Tab Bar Controller-->
         <scene sceneID="XFX-t6-Mcx">
             <objects>
-                <tabBarController storyboardIdentifier="rootTabBarController" id="20n-eq-WuT" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="rootTabBarController" id="20n-eq-WuT" customClass="ExThingsTabBarController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jdS-3z-vgE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -791,10 +791,10 @@
             </objects>
             <point key="canvasLocation" x="-1758" y="3084"/>
         </scene>
-        <!--Ex Place Detail In Tab Bar View Controller-->
+        <!--Ex Place Detail View Controller-->
         <scene sceneID="NrF-JI-s0w">
             <objects>
-                <viewController id="g8C-Sf-LUw" customClass="ExPlaceDetailInTabBarViewController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="g8C-Sf-LUw" customClass="ExPlaceDetailViewController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RZJ-gt-Q5k">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -873,7 +873,7 @@
                                                 <rect key="frame" x="0.0" y="499.33333333333326" width="414" height="30"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
-                                                    <action selector="selectExSpecies:" destination="g8C-Sf-LUw" eventType="touchUpInside" id="FCB-ds-nqe"/>
+                                                    <segue destination="akB-z5-Ez3" kind="unwind" unwindAction="showExSpeciesWithSegue:" id="6i1-iu-rER"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1302,6 +1302,7 @@
                         <outlet property="imageView" destination="YPz-NL-c9a" id="EFt-Tq-Ke2"/>
                         <outlet property="nearestPlaceButton" destination="W6L-ty-6Jz" id="zmB-iv-hig"/>
                         <outlet property="nearestSpeciesButton" destination="NkH-y1-KSz" id="zNe-mW-0Ix"/>
+                        <segue destination="xK4-li-B2W" kind="unwind" identifier="subviewWillAppear" unwindAction="subviewWillAppearWithSegue:" id="HUc-Hs-NJd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EjW-Zp-1UO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1418,6 +1419,7 @@
                         <outlet property="homeButton" destination="TW2-xt-kZ1" id="k5i-cM-bFE"/>
                         <outlet property="imageView" destination="g9Z-qg-TaU" id="Ojo-ez-fG6"/>
                         <outlet property="scientificNameLabel" destination="syh-6P-Wba" id="GGM-kn-p61"/>
+                        <segue destination="6sY-NX-HQu" kind="unwind" identifier="subviewWillAppear" unwindAction="subviewWillAppearWithSegue:" id="c3Q-Bl-VDJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jPc-Eo-I8s" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1538,11 +1540,11 @@
         <image name="icon_exSpecies" width="62" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pgp-1i-dOp"/>
+        <segue reference="BGJ-sS-jAK"/>
         <segue reference="l3u-QX-gFV"/>
         <segue reference="kaZ-tB-afT"/>
-        <segue reference="Ihv-D3-d5O"/>
-        <segue reference="2nb-CL-S7q"/>
-        <segue reference="gR5-LA-YSS"/>
+        <segue reference="8GW-rC-Z9q"/>
+        <segue reference="3X8-4g-0fS"/>
+        <segue reference="dbg-Pc-fIs"/>
     </inferredMetricsTieBreakers>
 </document>

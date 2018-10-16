@@ -29,14 +29,15 @@
 		AA022B37216C96AC009F9F75 /* ExPlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B36216C96AC009F9F75 /* ExPlacesTableViewController.swift */; };
 		AA022B3B216C9AA0009F9F75 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B3A216C9AA0009F9F75 /* SettingsViewController.swift */; };
 		AA022B43216D6141009F9F75 /* ExSpeciesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B42216D6141009F9F75 /* ExSpeciesTableViewController.swift */; };
-		AA022B45216D757A009F9F75 /* ExPlaceDetailInTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B44216D757A009F9F75 /* ExPlaceDetailInTabBarViewController.swift */; };
 		AA022B47216DCC85009F9F75 /* ExThingsSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA022B46216DCC85009F9F75 /* ExThingsSplitViewController.swift */; };
 		AA73B4CF217264B100F7BBF6 /* NoteEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B4CE217264B100F7BBF6 /* NoteEditorViewController.swift */; };
 		AA73B4F12175400300F7BBF6 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B4F02175400300F7BBF6 /* Preferences.swift */; };
+		AA73B4F32175601200F7BBF6 /* ViewControllerUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B4F22175601200F7BBF6 /* ViewControllerUtilities.swift */; };
+		AA73B4F721756FAD00F7BBF6 /* TextConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B4F621756FAD00F7BBF6 /* TextConsumer.swift */; };
+		AA73B4F92175A77100F7BBF6 /* ExThingsTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B4F82175A77100F7BBF6 /* ExThingsTabBarController.swift */; };
 		AAE1A685216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE1A684216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift */; };
 		AAE1A687216E8BF70055FC9A /* ExSpeciesDetailInSplitViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE1A686216E8BF70055FC9A /* ExSpeciesDetailInSplitViewViewController.swift */; };
 		AAE1A689216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE1A688216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift */; };
-		AAE1A68B216FE8100055FC9A /* ExThingsTableViewControllerV2.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE1A68A216FE8100055FC9A /* ExThingsTableViewControllerV2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,14 +65,15 @@
 		AA022B36216C96AC009F9F75 /* ExPlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExPlacesTableViewController.swift; sourceTree = "<group>"; };
 		AA022B3A216C9AA0009F9F75 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		AA022B42216D6141009F9F75 /* ExSpeciesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExSpeciesTableViewController.swift; sourceTree = "<group>"; };
-		AA022B44216D757A009F9F75 /* ExPlaceDetailInTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExPlaceDetailInTabBarViewController.swift; sourceTree = "<group>"; };
 		AA022B46216DCC85009F9F75 /* ExThingsSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExThingsSplitViewController.swift; sourceTree = "<group>"; };
 		AA73B4CE217264B100F7BBF6 /* NoteEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorViewController.swift; sourceTree = "<group>"; };
 		AA73B4F02175400300F7BBF6 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		AA73B4F22175601200F7BBF6 /* ViewControllerUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerUtilities.swift; sourceTree = "<group>"; };
+		AA73B4F621756FAD00F7BBF6 /* TextConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextConsumer.swift; sourceTree = "<group>"; };
+		AA73B4F82175A77100F7BBF6 /* ExThingsTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExThingsTabBarController.swift; sourceTree = "<group>"; };
 		AAE1A684216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExPlaceDetailInSplitViewViewController.swift; sourceTree = "<group>"; };
 		AAE1A686216E8BF70055FC9A /* ExSpeciesDetailInSplitViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExSpeciesDetailInSplitViewViewController.swift; sourceTree = "<group>"; };
 		AAE1A688216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExThingsTableInSplitViewViewController.swift; sourceTree = "<group>"; };
-		AAE1A68A216FE8100055FC9A /* ExThingsTableViewControllerV2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExThingsTableViewControllerV2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				AA022B0421657110009F9F75 /* Assets.xcassets */,
 				AA022B0621657110009F9F75 /* LaunchScreen.storyboard */,
 				AA73B4F02175400300F7BBF6 /* Preferences.swift */,
+				AA73B4F22175601200F7BBF6 /* ViewControllerUtilities.swift */,
 				AA022B0921657110009F9F75 /* Info.plist */,
 				AA022B11216571B7009F9F75 /* controller */,
 				AA022B0F216571A2009F9F75 /* model */,
@@ -128,6 +131,7 @@
 				AA022B202165BB03009F9F75 /* ExSpeciesService.swift */,
 				AA022B1C21658F83009F9F75 /* NamedPlace.swift */,
 				AA022B2C216AB261009F9F75 /* ExThing.swift */,
+				AA73B4F621756FAD00F7BBF6 /* TextConsumer.swift */,
 				AA022B1821657C51009F9F75 /* Place.swift */,
 				AA022B1A216589E2009F9F75 /* Place+CoreLocation.swift */,
 			);
@@ -146,11 +150,10 @@
 			children = (
 				AA022B2421660560009F9F75 /* ExPlaceDetailViewController.swift */,
 				AA022B36216C96AC009F9F75 /* ExPlacesTableViewController.swift */,
-				AA022B42216D6141009F9F75 /* ExSpeciesTableViewController.swift */,
 				AA022B28216AABB1009F9F75 /* ExSpeciesDetailViewController.swift */,
+				AA022B42216D6141009F9F75 /* ExSpeciesTableViewController.swift */,
 				AA022B2E216BE9FC009F9F75 /* ExSpeciesWidgetViewController.swift */,
 				AA022B1E2165B186009F9F75 /* ExThingsTableViewController.swift */,
-				AAE1A68A216FE8100055FC9A /* ExThingsTableViewControllerV2.swift */,
 				AA022B30216C1431009F9F75 /* MapViewController.swift */,
 				AA73B4CE217264B100F7BBF6 /* NoteEditorViewController.swift */,
 				AA022B3A216C9AA0009F9F75 /* SettingsViewController.swift */,
@@ -174,7 +177,7 @@
 		AAE1A68F21715FD90055FC9A /* tabBar */ = {
 			isa = PBXGroup;
 			children = (
-				AA022B44216D757A009F9F75 /* ExPlaceDetailInTabBarViewController.swift */,
+				AA73B4F82175A77100F7BBF6 /* ExThingsTabBarController.swift */,
 			);
 			path = tabBar;
 			sourceTree = "<group>";
@@ -252,11 +255,12 @@
 			files = (
 				AA022B2521660560009F9F75 /* ExPlaceDetailViewController.swift in Sources */,
 				AA022B37216C96AC009F9F75 /* ExPlacesTableViewController.swift in Sources */,
+				AA73B4F92175A77100F7BBF6 /* ExThingsTabBarController.swift in Sources */,
 				AA022B33216C224F009F9F75 /* AnnotatedPlace.swift in Sources */,
-				AAE1A68B216FE8100055FC9A /* ExThingsTableViewControllerV2.swift in Sources */,
 				AA022B232165D9CC009F9F75 /* ExPlacesService.swift in Sources */,
 				AA022B1721657942009F9F75 /* ExPlace.swift in Sources */,
 				AA022B2D216AB261009F9F75 /* ExThing.swift in Sources */,
+				AA73B4F32175601200F7BBF6 /* ViewControllerUtilities.swift in Sources */,
 				AAE1A689216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift in Sources */,
 				AA022B1521657554009F9F75 /* ExSpecies.swift in Sources */,
 				AA73B4CF217264B100F7BBF6 /* NoteEditorViewController.swift in Sources */,
@@ -264,9 +268,9 @@
 				AA022B1F2165B186009F9F75 /* ExThingsTableViewController.swift in Sources */,
 				AAE1A685216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift in Sources */,
 				AA022B212165BB03009F9F75 /* ExSpeciesService.swift in Sources */,
+				AA73B4F721756FAD00F7BBF6 /* TextConsumer.swift in Sources */,
 				AA022B1B216589E2009F9F75 /* Place+CoreLocation.swift in Sources */,
 				AAE1A687216E8BF70055FC9A /* ExSpeciesDetailInSplitViewViewController.swift in Sources */,
-				AA022B45216D757A009F9F75 /* ExPlaceDetailInTabBarViewController.swift in Sources */,
 				AA022B35216C231E009F9F75 /* AnnotatedPlace+MapKit.swift in Sources */,
 				AA022AFE2165710F009F9F75 /* AppDelegate.swift in Sources */,
 				AA022B1921657C51009F9F75 /* Place.swift in Sources */,

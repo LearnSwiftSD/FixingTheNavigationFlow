@@ -25,3 +25,7 @@ extension ExThing {
         return yearFormatter.string(from: extinctionDate)
     }
 }
+
+protocol ExThingConsumer: AnyObject {
+    var exThing: ExThing? { get set }
+}

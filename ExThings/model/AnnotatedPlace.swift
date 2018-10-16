@@ -14,3 +14,7 @@ protocol AnnotatedPlace: Place {
     var name: String { get set }
     var subtitle: String? { get set }
 }
+
+protocol AnnotatedPlaceConsumer: AnyObject {
+    var annotatedPlace: AnnotatedPlace? { get set }
+}

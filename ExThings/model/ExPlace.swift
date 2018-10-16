@@ -29,3 +29,7 @@ struct ExPlace: ExThing, AnnotatedPlace, Codable, Hashable {
     // Unique ID for this object.
     var uuid: UUID
 }
+
+protocol ExPlaceConsumer: AnyObject {
+    var exPlace: ExPlace? { get set }
+}

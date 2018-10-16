@@ -95,31 +95,19 @@ class ExPlaceDetailViewController: UIViewController {
             
         // Show ExPlace detail view.
         case "showExPlaceDetail":
-            if let destinationVC = segue.destination as? ExPlaceDetailViewController {
-                destinationVC.exPlace = nearestExPlace
-            }
+            (segue.destination.content as? ExPlaceConsumer)?.exPlace = nearestExPlace
             
         // Show ExSpecies detail view.
         case "showExSpeciesDetail":
-            if let destinationVC = segue.destination as? ExSpeciesDetailViewController {
-                destinationVC.exSpecies = nearestExSpecies
-            }
+            (segue.destination.content as? ExSpeciesConsumer)?.exSpecies = nearestExSpecies
             
-        // Show map.
+        // Show map view.
         case "showMap":
-            if let destinationNavVC = segue.destination as? UINavigationController,
-                let mapVC = destinationNavVC.visibleViewController as? MapViewController
-            {
-                mapVC.place = exPlace
-            }
+            (segue.destination.content as? AnnotatedPlaceConsumer)?.annotatedPlace = nearestExPlace
             
         // Show note editor.
         case "showNote":
-            if let destinationNavVC = segue.destination as? UINavigationController,
-                let noteEditorVC = destinationNavVC.visibleViewController as? NoteEditorViewController
-            {
-                noteEditorVC.text = exPlace?.notes
-            }
+            (segue.destination.content as? TextConsumer)?.text = exPlace?.notes
             
         default:
             break
@@ -127,7 +115,8 @@ class ExPlaceDetailViewController: UIViewController {
     }
     
     @IBAction func selectSaveNote(segue: UIStoryboardSegue) {
-        if let noteEditorVC = segue.source as? NoteEditorViewController,
+        
+        if let noteEditorVC = segue.source as? TextConsumer,
             exPlace != nil
         {
             exPlace!.notes = noteEditorVC.text
@@ -136,4 +125,30 @@ class ExPlaceDetailViewController: UIViewController {
         }
     }
     
+}
+
+extension ExPlaceDetailViewController: ExPlaceConsumer {}
+
+extension ExPlaceDetailViewController: ExSpeciesConsumer {
+    var exSpecies: ExSpecies? {
+        get {
+            return nearestExSpecies
+        }
+        set {
+            // Do nothing. Shield internal data being set externally.
+        }
+    }
+}
+
+extension ExPlaceDetailViewController: ExThingConsumer {
+    var exThing: ExThing? {
+        get {
+            return exPlace
+        }
+        set {
+            if let newExPlace = newValue as? ExPlace {
+                exPlace = newExPlace
+            }
+        }
+    }
 }

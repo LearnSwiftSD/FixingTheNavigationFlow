@@ -15,7 +15,13 @@ class ExSpeciesTableViewController: UITableViewController {
     // MARK: - Model - Services
     
     lazy var exSpeciesService = (UIApplication.shared.delegate as! AppDelegate).exSpeciesService
-    lazy var exSpecies = exSpeciesService.exSpecies
+    
+    // Retrieve the latest authoritative exSpecies data.
+    var exSpecies: Array<ExSpecies> {
+        get {
+            return exSpeciesService.exSpecies
+        }
+    }
     
     // MARK: - Lifecycle
     
@@ -55,10 +61,10 @@ class ExSpeciesTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let exSpeciesDetailViewController = segue.destination as? ExSpeciesDetailViewController,
+        if let exSpeciesVC = segue.destination as? ExSpeciesConsumer,
             let selectedIndex = tableView.indexPathForSelectedRow {
             let selectedExSpecies = exSpecies[selectedIndex.row]
-            exSpeciesDetailViewController.exSpecies = selectedExSpecies
+            exSpeciesVC.exSpecies = selectedExSpecies
         }
     }
 

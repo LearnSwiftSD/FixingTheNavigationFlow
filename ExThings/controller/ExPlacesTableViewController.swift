@@ -15,7 +15,13 @@ class ExPlacesTableViewController: UITableViewController {
     // MARK: - Model - Services
     
     lazy var exPlacesService = (UIApplication.shared.delegate as! AppDelegate).exPlacesService
-    lazy var exPlaces = exPlacesService.exPlaces
+    
+    // Retrieve the latest authoritative exPlaces data.
+    var exPlaces: Array<ExPlace> {
+        get {
+            return exPlacesService.exPlaces
+        }
+    }
     
     // MARK: - Lifecycle
 
@@ -55,10 +61,10 @@ class ExPlacesTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let exPlaceDetailViewController = segue.destination as? ExPlaceDetailViewController,
+        if let exPlaceVC = segue.destination as? ExPlaceConsumer,
             let selectedIndex = tableView.indexPathForSelectedRow {
             let selectedExPlace = exPlaces[selectedIndex.row]
-            exPlaceDetailViewController.exPlace = selectedExPlace
+            exPlaceVC.exPlace = selectedExPlace
         }
     }
     

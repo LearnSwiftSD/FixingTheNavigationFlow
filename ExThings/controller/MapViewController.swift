@@ -74,3 +74,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
 
 }
+
+extension MapViewController: AnnotatedPlaceConsumer {
+    var annotatedPlace: AnnotatedPlace? {
+        get {
+            return place
+        }
+        set {
+            place = newValue
+        }
+    }
+}

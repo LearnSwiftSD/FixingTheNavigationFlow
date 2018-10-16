@@ -26,8 +26,9 @@ class ExSpeciesDetailInSplitViewViewController: ExSpeciesDetailViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        updatePrimaryVC()
+        //updatePrimaryVC()
         updateNavigationBar(of: navigationController)
+        performSegue(withIdentifier: "subviewWillAppear", sender: self)
     }
     
     // todo - updateHomeButton needs to be called on orientation change, since this can change the horizontal trait from compact to regular (requiring Home button to be again hidden).
@@ -35,11 +36,11 @@ class ExSpeciesDetailInSplitViewViewController: ExSpeciesDetailViewController {
     // MARK: - ExSpecies widget delegate
     
     override func widgetView(_ widgetView: ExSpeciesWidgetViewController, didSelect exSpecies: ExSpecies) {
-        guard let relatedExSpeciesDetailViewController = storyboard?.instantiateViewController(withIdentifier: "exSpeciesDetailInSplitViewViewController") else { return }
-        if let newSpeciesVC = relatedExSpeciesDetailViewController as? ExSpeciesDetailViewController {
+        guard let relatedExSpeciesDetailVC = storyboard?.instantiateViewController(withIdentifier: "exSpeciesDetailInSplitViewViewController") else { return }
+        if let newSpeciesVC = relatedExSpeciesDetailVC as? ExSpeciesConsumer {
             newSpeciesVC.exSpecies = exSpecies
         }
-        show(relatedExSpeciesDetailViewController, sender: self)
+        show(relatedExSpeciesDetailVC, sender: self)
     }
     
     // MARK: - Rendering

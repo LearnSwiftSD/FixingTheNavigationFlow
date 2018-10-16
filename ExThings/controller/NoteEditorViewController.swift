@@ -50,7 +50,7 @@ class NoteEditorViewController: UIViewController, UITextViewDelegate {
     private func updateViewFromData() {
         noteTextView?.text = text ?? ""
     }
-    
-    
 
 }
+
+extension NoteEditorViewController: TextConsumer {}

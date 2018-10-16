@@ -154,7 +154,11 @@ class ExSpeciesService {
         var matchingSpecies = exSpecies.filter { $0.generalClass == generalClass }
         
         // Exclude any exceptions.
-        matchingSpecies = matchingSpecies.filter { !(exceptionSpecies.contains($0)) }
+        matchingSpecies = matchingSpecies.filter { filteredElement in
+            return !exceptionSpecies.contains { exceptionElement in
+                return exceptionElement.uuid == filteredElement.uuid
+            }
+        }
         
         // Limit the results.
         if let limit = countLimit, matchingSpecies.count > limit {

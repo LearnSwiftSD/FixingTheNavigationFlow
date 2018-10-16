@@ -98,19 +98,14 @@ class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource
             
         // Show map.
         case "showMap":
-            if let destinationNavVC = segue.destination as? UINavigationController,
-                let mapVC = destinationNavVC.visibleViewController as? MapViewController,
+            if let destinationVC = segue.destination.content as? AnnotatedPlaceConsumer,
                 let habitat = exSpecies?.habitat[0] {
-                mapVC.place = habitat
+                destinationVC.annotatedPlace = habitat
             }
             
         // Show note editor.
         case "showNote":
-            if let destinationNavVC = segue.destination as? UINavigationController,
-                let noteEditorVC = destinationNavVC.visibleViewController as? NoteEditorViewController
-            {
-                noteEditorVC.text = exSpecies?.notes
-            }
+            (segue.destination.content as? TextConsumer)?.text = exSpecies?.notes
             
         default:
             break
@@ -153,4 +148,19 @@ class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource
         show(viewUsing: exSpecies)
     }
     
+}
+
+extension ExSpeciesDetailViewController: ExSpeciesConsumer {}
+
+extension ExSpeciesDetailViewController: ExThingConsumer {
+    var exThing: ExThing? {
+        get {
+            return exSpecies
+        }
+        set {
+            if let newExSpecies = newValue as? ExSpecies {
+                exSpecies = newExSpecies
+            }
+        }
+    }
 }
