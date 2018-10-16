@@ -114,7 +114,7 @@ class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource
     }
     
     @IBAction func selectSaveNote(segue: UIStoryboardSegue) {
-        if let noteEditorVC = segue.source as? NoteEditorViewController,
+        if let noteEditorVC = segue.source.content as? NoteEditorViewController,
             exSpecies != nil
         {
             exSpecies!.notes = noteEditorVC.text

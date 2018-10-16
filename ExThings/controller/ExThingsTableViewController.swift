@@ -13,7 +13,12 @@ import UIKit
 class ExThingsTableViewController: UITableViewController {
     
     // MARK: - Model - Services
-    lazy var exThingsDataSource: Array<Array<ExThing>> = [exPlaces, exSpecies]
+    
+    var exThingsDataSource: Array<Array<ExThing>> {
+        get {
+            return [exPlaces, exSpecies]
+        }
+    }
     
     lazy var exPlacesService = (UIApplication.shared.delegate as! AppDelegate).exPlacesService
     lazy var exSpeciesService = (UIApplication.shared.delegate as! AppDelegate).exSpeciesService
