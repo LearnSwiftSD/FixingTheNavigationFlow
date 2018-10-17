@@ -10,7 +10,7 @@
 
 import UIKit
 
-class ExPlaceDetailViewController: DelegatedSegueViewController {
+class ExPlaceDetailViewController: UIViewController {
     
     @IBOutlet weak var descriptionTextView: UITextView!
     
@@ -54,9 +54,6 @@ class ExPlaceDetailViewController: DelegatedSegueViewController {
         super.viewDidLoad()
         
         updateViewFromData()
-        
-        // kludge - This is an anti-pattern: bastard injection
-        segueDelegate = ExPlaceDetailNavigator()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,10 +89,31 @@ class ExPlaceDetailViewController: DelegatedSegueViewController {
     
     // MARK: - Navigation
     
-    // As an experiment, we used a SegueDelegate to handle the majority of the segue operations.
-    // See ExPlaceDetailNavigator.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+            
+        // Show ExPlace detail view.
+        case "showExPlaceDetail":
+            (segue.destination.content as? ExPlaceConsumer)?.exPlace = nearestExPlace
+            
+        // Show ExSpecies detail view.
+        case "showExSpeciesDetail":
+            (segue.destination.content as? ExSpeciesConsumer)?.exSpecies = nearestExSpecies
+            
+        // Show map view.
+        case "showMap":
+            (segue.destination.content as? AnnotatedPlaceConsumer)?.annotatedPlace = nearestExPlace
+            
+        // Show note editor.
+        case "showNote":
+            (segue.destination.content as? TextConsumer)?.text = exPlace?.notes
+            
+        default:
+            break
+        }
+    }
     
-    // The segue delegate is still unable to handle this!
     @IBAction func selectSaveNote(segue: UIStoryboardSegue) {
         
         if let noteEditorVC = segue.source as? TextConsumer,

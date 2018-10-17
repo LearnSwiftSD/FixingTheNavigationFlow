@@ -10,6 +10,8 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var coordinator: MainCoordinator?
 
     var window: UIWindow?
     
@@ -26,7 +28,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Set the root view controller to the chosen navigation container.
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
         let rootVC = sb.instantiateViewController(withIdentifier: Preferences.container.asStoryboardID())
+        
+        // Create a basic UIWindow and activate it
+        window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = rootVC
+        window?.makeKeyAndVisible()
+        
+        // Pass the root view controller to the main coordinator.
+        coordinator = MainCoordinator(viewController: rootVC)
+        
+        // Bless the point of entry and start the application flow.
+        coordinator?.start()
         
         return true
     }
