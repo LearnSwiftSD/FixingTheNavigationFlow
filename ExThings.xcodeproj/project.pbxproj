@@ -38,6 +38,10 @@
 		AA73B5192176962900F7BBF6 /* SegueDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B5182176962900F7BBF6 /* SegueDelegate.swift */; };
 		AA73B51B2176963200F7BBF6 /* DelegatedSegueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B51A2176963100F7BBF6 /* DelegatedSegueViewController.swift */; };
 		AA73B51E2176A26000F7BBF6 /* ExPlaceDetailNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B51D2176A26000F7BBF6 /* ExPlaceDetailNavigator.swift */; };
+		AA73B53D2177A9B300F7BBF6 /* ExSpeciesDetailNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B53C2177A9B300F7BBF6 /* ExSpeciesDetailNavigator.swift */; };
+		AA73B53F2177B16500F7BBF6 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B53E2177B16500F7BBF6 /* Navigator.swift */; };
+		AA73B5412177C6BA00F7BBF6 /* ExThingsTableNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B5402177C6BA00F7BBF6 /* ExThingsTableNavigator.swift */; };
+		AA73B5452177CAC300F7BBF6 /* DelegatedSegueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA73B5442177CAC300F7BBF6 /* DelegatedSegueTableViewController.swift */; };
 		AAE1A685216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE1A684216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift */; };
 		AAE1A687216E8BF70055FC9A /* ExSpeciesDetailInSplitViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE1A686216E8BF70055FC9A /* ExSpeciesDetailInSplitViewViewController.swift */; };
 		AAE1A689216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE1A688216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift */; };
@@ -77,6 +81,10 @@
 		AA73B5182176962900F7BBF6 /* SegueDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueDelegate.swift; sourceTree = "<group>"; };
 		AA73B51A2176963100F7BBF6 /* DelegatedSegueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegatedSegueViewController.swift; sourceTree = "<group>"; };
 		AA73B51D2176A26000F7BBF6 /* ExPlaceDetailNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExPlaceDetailNavigator.swift; sourceTree = "<group>"; };
+		AA73B53C2177A9B300F7BBF6 /* ExSpeciesDetailNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExSpeciesDetailNavigator.swift; sourceTree = "<group>"; };
+		AA73B53E2177B16500F7BBF6 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
+		AA73B5402177C6BA00F7BBF6 /* ExThingsTableNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExThingsTableNavigator.swift; sourceTree = "<group>"; };
+		AA73B5442177CAC300F7BBF6 /* DelegatedSegueTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatedSegueTableViewController.swift; sourceTree = "<group>"; };
 		AAE1A684216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExPlaceDetailInSplitViewViewController.swift; sourceTree = "<group>"; };
 		AAE1A686216E8BF70055FC9A /* ExSpeciesDetailInSplitViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExSpeciesDetailInSplitViewViewController.swift; sourceTree = "<group>"; };
 		AAE1A688216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExThingsTableInSplitViewViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +127,7 @@
 				AA73B4F02175400300F7BBF6 /* Preferences.swift */,
 				AA73B4F22175601200F7BBF6 /* ViewControllerUtilities.swift */,
 				AA73B51A2176963100F7BBF6 /* DelegatedSegueViewController.swift */,
+				AA73B5442177CAC300F7BBF6 /* DelegatedSegueTableViewController.swift */,
 				AA73B5182176962900F7BBF6 /* SegueDelegate.swift */,
 				AA022B0921657110009F9F75 /* Info.plist */,
 				AA022B11216571B7009F9F75 /* controller */,
@@ -175,6 +184,9 @@
 		AA73B51C2176A22C00F7BBF6 /* navigator */ = {
 			isa = PBXGroup;
 			children = (
+				AA73B5402177C6BA00F7BBF6 /* ExThingsTableNavigator.swift */,
+				AA73B53C2177A9B300F7BBF6 /* ExSpeciesDetailNavigator.swift */,
+				AA73B53E2177B16500F7BBF6 /* Navigator.swift */,
 				AA73B51D2176A26000F7BBF6 /* ExPlaceDetailNavigator.swift */,
 			);
 			path = navigator;
@@ -270,21 +282,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA73B53D2177A9B300F7BBF6 /* ExSpeciesDetailNavigator.swift in Sources */,
 				AA022B2521660560009F9F75 /* ExPlaceDetailViewController.swift in Sources */,
 				AA022B37216C96AC009F9F75 /* ExPlacesTableViewController.swift in Sources */,
 				AA73B4F92175A77100F7BBF6 /* ExThingsTabBarController.swift in Sources */,
 				AA022B33216C224F009F9F75 /* AnnotatedPlace.swift in Sources */,
+				AA73B53F2177B16500F7BBF6 /* Navigator.swift in Sources */,
 				AA022B232165D9CC009F9F75 /* ExPlacesService.swift in Sources */,
 				AA022B1721657942009F9F75 /* ExPlace.swift in Sources */,
 				AA022B2D216AB261009F9F75 /* ExThing.swift in Sources */,
 				AA73B4F32175601200F7BBF6 /* ViewControllerUtilities.swift in Sources */,
 				AAE1A689216E9A370055FC9A /* ExThingsTableInSplitViewViewController.swift in Sources */,
 				AA022B1521657554009F9F75 /* ExSpecies.swift in Sources */,
+				AA73B5412177C6BA00F7BBF6 /* ExThingsTableNavigator.swift in Sources */,
 				AA73B4CF217264B100F7BBF6 /* NoteEditorViewController.swift in Sources */,
 				AA022B29216AABB1009F9F75 /* ExSpeciesDetailViewController.swift in Sources */,
 				AA022B1F2165B186009F9F75 /* ExThingsTableViewController.swift in Sources */,
 				AA73B5192176962900F7BBF6 /* SegueDelegate.swift in Sources */,
 				AAE1A685216E7FF00055FC9A /* ExPlaceDetailInSplitViewViewController.swift in Sources */,
+				AA73B5452177CAC300F7BBF6 /* DelegatedSegueTableViewController.swift in Sources */,
 				AA022B212165BB03009F9F75 /* ExSpeciesService.swift in Sources */,
 				AA73B4F721756FAD00F7BBF6 /* TextConsumer.swift in Sources */,
 				AA022B1B216589E2009F9F75 /* Place+CoreLocation.swift in Sources */,

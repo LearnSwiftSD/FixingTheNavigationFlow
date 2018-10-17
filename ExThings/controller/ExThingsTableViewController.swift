@@ -10,7 +10,7 @@
 
 import UIKit
 
-class ExThingsTableViewController: UITableViewController {
+class ExThingsTableViewController: DelegatedSegueTableViewController {
     
     // MARK: - Model - Services
     
@@ -43,8 +43,22 @@ class ExThingsTableViewController: UITableViewController {
             return exSpeciesService.exSpecies
         }
     }
+    
+    var selectedExThing: ExThing? {
+        get {
+            guard let selectedIndex: IndexPath = tableView.indexPathForSelectedRow else { return nil }
+            return exThingsDataSource[selectedIndex.section][selectedIndex.row]
+        }
+    }
 
     // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // kludge - This is an anti-pattern: bastard injection
+        segueDelegate = ExThingsTableNavigator()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -85,33 +99,9 @@ class ExThingsTableViewController: UITableViewController {
 
         return cell
     }
-
+    
     // MARK: - Navigation
     
-    // Navigation stub for an unwind segue.
-    @IBAction func goHome(segue: UIStoryboardSegue) {
-        // Nothing needs doing, but it's good to be home.
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let _ = sender as? UITableViewCell,
-            let selectedIndex = tableView.indexPathForSelectedRow
-        {
-            let selectedExThing = exThingsDataSource[selectedIndex.section][selectedIndex.row]
-            switch selectedExThing {
-                
-            // Show ExPlace detail view.
-            case let selectedExPlace as ExPlace:
-                (segue.destination as? ExPlaceConsumer)?.exPlace = selectedExPlace
-                
-            // Show ExSpecies detail view.
-            case let selectedExSpecies as ExSpecies:
-                (segue.destination as? ExSpeciesConsumer)?.exSpecies = selectedExSpecies
-                
-            default :
-                break
-            }
-        }
-    }
+    // All handled by ExThingsTableNavigator.
     
 }

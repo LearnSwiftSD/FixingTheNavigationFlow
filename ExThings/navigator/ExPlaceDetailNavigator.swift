@@ -37,3 +37,14 @@ class ExPlaceDetailNavigator: SegueDelegate {
     }
     
 }
+
+extension ExPlaceDetailViewController {
+    @IBAction func selectSaveNote(segue: UIStoryboardSegue) {
+        if let noteEditor = segue.source as? TextConsumer,
+            exPlace != nil
+        {
+            exPlace!.notes = noteEditor.text
+            exPlacesService.save(exPlace!)
+        }
+    }
+}

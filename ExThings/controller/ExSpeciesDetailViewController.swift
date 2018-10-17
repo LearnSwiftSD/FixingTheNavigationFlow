@@ -11,7 +11,7 @@
 
 import UIKit
 
-class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource, ExSpeciesWidgetDelegate {
+class ExSpeciesDetailViewController: DelegatedSegueViewController, ExSpeciesWidgetDataSource, ExSpeciesWidgetDelegate {
     
     @IBOutlet weak var descriptionTextView: UITextView!
     
@@ -22,6 +22,8 @@ class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource
     @IBOutlet weak var imageView: UIImageView!
     
     @IBOutlet weak var scientificNameLabel: UILabel!
+    
+    var navigator: ExSpeciesDetailNavigator?
     
     // MARK: - Model
     
@@ -48,6 +50,10 @@ class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // kludge - This is an anti-pattern: bastard injection
+        navigator = ExSpeciesDetailNavigator()
+        segueDelegate = navigator
 
         updateViewFromData()
     }
@@ -85,51 +91,32 @@ class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource
 
     // MARK: - Navigation
     
+    // This is the "first responder" to the prepare(for:sender:) call.
+    // important - The segueDelegate does not receive embed segues!
+    // kludge - We override the super implementation here to intercept the "embedExSpeciesWidget" embed segue.
+    // All other segues are handled by the parent class.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         switch segue.identifier {
             
-        // ExSpecies widget embed segue.
+            // ExSpecies widget embed segue.
+        // This must be handled here.
         case "embedExSpeciesWidget":
             if let similarSpeciesWidget = segue.destination as? ExSpeciesWidgetViewController {
                 similarSpeciesWidget.dataSource = self
                 similarSpeciesWidget.delegate = self
             }
             
-        // Show map.
-        case "showMap":
-            if let destinationVC = segue.destination.content as? AnnotatedPlaceConsumer,
-                let habitat = exSpecies?.habitat[0] {
-                destinationVC.annotatedPlace = habitat
-            }
-            
-        // Show note editor.
-        case "showNote":
-            (segue.destination.content as? TextConsumer)?.text = exSpecies?.notes
-            
+        // Let the DelegatedSegueViewController super class handle everything else (which sends the call to the segueDelegate implementation).
         default:
-            break
+            super.prepare(for: segue, sender: sender)
             
-        }
-    }
-    
-    @IBAction func selectSaveNote(segue: UIStoryboardSegue) {
-        if let noteEditorVC = segue.source.content as? NoteEditorViewController,
-            exSpecies != nil
-        {
-            exSpecies!.notes = noteEditorVC.text
-            exSpeciesService.save(exSpecies!)
-            updateViewFromData()
         }
     }
     
     // Show a new view that displays ExSpecies.
     func show(viewUsing exSpecies: ExSpecies) {
-        guard let relatedExSpeciesDetailVC = storyboard?.instantiateViewController(withIdentifier: "exSpeciesDetailViewController") else { return }
-        if let newSpeciesVC = relatedExSpeciesDetailVC as? ExSpeciesDetailViewController {
-            newSpeciesVC.exSpecies = exSpecies
-        }
-        show(relatedExSpeciesDetailVC, sender: self)
+        navigator?.navigate(to: .exSpeciesView(exSpecies: exSpecies), from: self)
     }
     
     // MARK: - ExSpecies widget data source

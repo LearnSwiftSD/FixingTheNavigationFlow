@@ -53,10 +53,10 @@ class ExPlaceDetailViewController: DelegatedSegueViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateViewFromData()
-        
         // kludge - This is an anti-pattern: bastard injection
         segueDelegate = ExPlaceDetailNavigator()
+        
+        updateViewFromData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,20 +92,7 @@ class ExPlaceDetailViewController: DelegatedSegueViewController {
     
     // MARK: - Navigation
     
-    // As an experiment, we used a SegueDelegate to handle the majority of the segue operations.
-    // See ExPlaceDetailNavigator.
-    
-    // The segue delegate is still unable to handle this!
-    @IBAction func selectSaveNote(segue: UIStoryboardSegue) {
-        
-        if let noteEditorVC = segue.source as? TextConsumer,
-            exPlace != nil
-        {
-            exPlace!.notes = noteEditorVC.text
-            exPlacesService.save(exPlace!)
-            updateViewFromData()
-        }
-    }
+    // ExPlaceDetailNavigator handles all segue navigation.
     
 }
 
