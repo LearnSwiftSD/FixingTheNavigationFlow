@@ -22,8 +22,6 @@ class ExPlacesService {
     
     lazy var exPlaces: Array<ExPlace> = {
         
-        print("exPlaces data init")
-        
         var xYear = Double(2005 - referenceYear)
         let xp1 = ExPlace(
             name: "Six Flags, New Orleans",

@@ -12,9 +12,38 @@
 
 import UIKit
 
-protocol Coordinator {
+protocol Coordinator : AnyObject {
     var childCoordinators: [Coordinator] { get set }
-    var viewController: UIViewController { get set }
+    var parentCoordinator: Coordinator? { get set }
+    var presentingController: UIViewController { get set }
+    //var uuid: UUID { get }
     
     func start()
+}
+
+extension Coordinator {
+    func addChild(_ coordinator: Coordinator) {
+        if !childCoordinators.contains(where: {$0 === coordinator}) {
+            childCoordinators.append(coordinator)
+        }
+    }
+    
+    func removeChild(_ coordinator: Coordinator?) {
+        guard
+            childCoordinators.isEmpty == false,
+            let coordinator = coordinator
+            else { return }
+        
+        for (index, element) in childCoordinators.enumerated() {
+            if element === coordinator {
+                childCoordinators.remove(at: index)
+                break
+            }
+        }
+    }
+    
+    func removeSelf() {
+        childCoordinators = []
+        parentCoordinator?.removeChild(self)
+    }
 }

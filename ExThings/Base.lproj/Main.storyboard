@@ -13,7 +13,7 @@
         <!--ExThings-->
         <scene sceneID="T1K-Wr-Pg9">
             <objects>
-                <tableViewController id="Fwp-RY-65S" customClass="ExThingsTableViewController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ExThingsTableViewController" id="Fwp-RY-65S" customClass="ExThingsTableViewController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="b71-P5-I8b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,9 +45,6 @@
                                     <color key="backgroundColor" red="0.18444505333900452" green="0.18048211932182312" blue="0.17622989416122437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.18444505333900452" green="0.18048211932182312" blue="0.17622989416122437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <segue destination="GlW-vQ-jPP" kind="show" identifier="showExPlaceDetail" id="kel-DZ-h6p"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="exSpeciesTableViewCell" textLabel="Zj8-ZZ-FfE" imageView="AJx-p5-VLw" style="IBUITableViewCellStyleDefault" id="k1D-tl-C4d">
                                 <rect key="frame" x="0.0" y="99.333333333333343" width="414" height="44"/>
@@ -72,9 +69,6 @@
                                     <color key="backgroundColor" red="0.18444505333900452" green="0.18048211932182312" blue="0.17622989416122437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.18444505333900452" green="0.18048211932182312" blue="0.17622989416122437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <segue destination="HOT-Tz-TDK" kind="show" identifier="showExSpeciesDetail" id="dbg-Pc-fIs"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -85,7 +79,7 @@
                     <navigationItem key="navigationItem" title="ExThings" id="Zd1-3I-V1d">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="wzM-62-Fwg">
                             <connections>
-                                <segue destination="Z6t-Dn-5mG" kind="presentation" id="2XQ-cn-8Xk"/>
+                                <action selector="selectSettings:" destination="Fwp-RY-65S" id="Mv1-Ed-zpK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -97,13 +91,13 @@
         <!--ExPlaces-->
         <scene sceneID="rdF-ej-6wb">
             <objects>
-                <viewController title="ExPlaces" id="GlW-vQ-jPP" customClass="ExPlaceDetailViewController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExPlaceDetailViewController" title="ExPlaces" id="GlW-vQ-jPP" customClass="ExPlaceDetailViewController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="f9Y-d5-GG3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6AH-a4-VRK" userLabel="Content Stack View">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9ck-2T-wkz" userLabel="Image and Subheader Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="187.66666666666666"/>
@@ -127,7 +121,7 @@
                                                         <rect key="frame" x="122.33333333333334" y="8" width="86.333333333333343" height="30"/>
                                                         <state key="normal" title="Map"/>
                                                         <connections>
-                                                            <segue destination="la2-T3-OJf" kind="presentation" identifier="showMap" id="Yst-43-ZKY"/>
+                                                            <action selector="selectMap:" destination="GlW-vQ-jPP" eventType="touchUpInside" id="m4J-tE-pjL"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -136,7 +130,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RZG-FD-hRR">
-                                        <rect key="frame" x="0.0" y="195.66666666666669" width="414" height="578.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="195.66666666666669" width="414" height="622.33333333333326"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="oe3-sJ-zDR">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="50.666666666666664"/>
@@ -147,36 +141,36 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ml5-QI-hhW">
-                                                <rect key="frame" x="0.0" y="58.666666666666629" width="414" height="387"/>
+                                                <rect key="frame" x="0.0" y="58.666666666666629" width="414" height="431"/>
                                                 <state key="normal" title="Add Note"/>
                                                 <connections>
-                                                    <segue destination="cpH-RE-8X6" kind="presentation" identifier="showNote" id="Czw-Xs-Q7n"/>
+                                                    <action selector="selectAddNote:" destination="GlW-vQ-jPP" eventType="touchUpInside" id="sJ5-HM-KqQ"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nearest abandoned place:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFd-Ts-Ykv">
-                                                <rect key="frame" x="0.0" y="453.66666666666669" width="414" height="20.333333333333314"/>
+                                                <rect key="frame" x="0.0" y="497.66666666666674" width="414" height="20.333333333333371"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QXe-uH-Nbe">
-                                                <rect key="frame" x="0.0" y="481.99999999999994" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="526" width="414" height="30"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
-                                                    <segue destination="GlW-vQ-jPP" kind="show" identifier="showExPlaceDetail" id="zR4-0h-kgO"/>
+                                                    <action selector="selectNearestPlace:" destination="GlW-vQ-jPP" eventType="touchUpInside" id="CrY-q4-x7V"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nearest extinct species habitat:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36D-zG-CVz">
-                                                <rect key="frame" x="0.0" y="520" width="414" height="20.333333333333371"/>
+                                                <rect key="frame" x="0.0" y="564" width="414" height="20.333333333333371"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vM-jH-XP3">
-                                                <rect key="frame" x="0.0" y="548.33333333333326" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="592.33333333333337" width="414" height="30"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
-                                                    <segue destination="HOT-Tz-TDK" kind="show" identifier="showExSpeciesDetail" id="gR5-LA-YSS"/>
+                                                    <action selector="selectNearestSpecies:" destination="GlW-vQ-jPP" eventType="touchUpInside" id="jAl-cf-sHI"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -197,7 +191,7 @@
                     <navigationItem key="navigationItem" id="BAX-yi-pkQ">
                         <barButtonItem key="rightBarButtonItem" title="Home" id="erd-6f-bdO">
                             <connections>
-                                <segue destination="6yA-N6-P3z" kind="unwind" unwindAction="goHomeWithSegue:" id="rHl-Hs-Bbt"/>
+                                <action selector="selectHome:" destination="GlW-vQ-jPP" id="vMl-3a-aa0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -210,14 +204,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="deH-Dw-szY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="6yA-N6-P3z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="361" y="-384"/>
+            <point key="canvasLocation" x="312" y="-309"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Ex Things Navigation Controller-->
         <scene sceneID="JA3-fm-pmD">
             <objects>
-                <navigationController storyboardIdentifier="rootNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="eJx-PX-eqd" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="rootNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="eJx-PX-eqd" customClass="ExThingsNavigationController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="wxK-LN-xg3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -225,9 +218,6 @@
                         <color key="backgroundColor" red="0.18444505333900452" green="0.18048211932182312" blue="0.17622989416122437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Fwp-RY-65S" kind="relationship" relationship="rootViewController" id="XEq-3J-ZMy"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrF-FI-AoV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -236,7 +226,7 @@
         <!--Settings-->
         <scene sceneID="NXt-gF-vsC">
             <objects>
-                <tableViewController id="hV3-WE-wH7" customClass="SettingsViewController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsViewController" id="hV3-WE-wH7" customClass="SettingsViewController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="aOD-Ba-mpk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -322,12 +312,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HPR-Gs-NMA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1309" y="-1250"/>
+            <point key="canvasLocation" x="2135" y="-1286"/>
         </scene>
         <!--Note Editor View Controller-->
         <scene sceneID="AXA-XL-wap">
             <objects>
-                <viewController id="aMt-RC-yGr" customClass="NoteEditorViewController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoteEditorViewController" id="aMt-RC-yGr" customClass="NoteEditorViewController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IBW-E6-hYR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -380,10 +370,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f3f-fF-Jcd" userLabel="Content Stack View">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="T42-xB-PD4" userLabel="Image and Subheader Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="151"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="160.66666666666666"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KS7-RK-akR">
                                                 <rect key="frame" x="162.66666666666666" y="0.0" width="89" height="50"/>
@@ -404,19 +394,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="820" verticalCompressionResistancePriority="820" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Jmv-z1-G3p" userLabel="Subheader Stack View">
-                                                <rect key="frame" x="100.33333333333333" y="114.66666666666664" width="213.33333333333337" height="36.333333333333329"/>
+                                                <rect key="frame" x="100.33333333333333" y="114.66666666666666" width="213.33333333333337" height="46"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="820" text="extinct by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IdW-gY-cnw">
-                                                        <rect key="frame" x="28.000000000000007" y="7.9999999999999982" width="74.666666666666686" height="20.333333333333329"/>
+                                                        <rect key="frame" x="28.000000000000007" y="8" width="74.666666666666686" height="30"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                         <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRI-MG-1Yt">
-                                                        <rect key="frame" x="110.66666666666666" y="7.9999999999999982" width="74.666666666666657" height="20.333333333333329"/>
+                                                        <rect key="frame" x="110.66666666666666" y="8" width="74.666666666666657" height="30"/>
                                                         <state key="normal" title="Map"/>
                                                         <connections>
-                                                            <segue destination="la2-T3-OJf" kind="presentation" identifier="showMap" id="No2-Cg-KzM"/>
+                                                            <action selector="selectMap:" destination="HOT-Tz-TDK" eventType="touchUpInside" id="s8F-29-dab"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -425,7 +415,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OWI-0t-kKh">
-                                        <rect key="frame" x="0.0" y="159" width="414" height="615"/>
+                                        <rect key="frame" x="0.0" y="168.66666666666669" width="414" height="649.33333333333326"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ELt-eI-C1Q">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="389"/>
@@ -436,14 +426,14 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUG-K2-58e">
-                                                <rect key="frame" x="0.0" y="397" width="414" height="30"/>
+                                                <rect key="frame" x="0.0" y="397" width="414" height="64.333333333333314"/>
                                                 <state key="normal" title="Add Note"/>
                                                 <connections>
-                                                    <segue destination="cpH-RE-8X6" kind="presentation" identifier="showNote" id="ejJ-03-lLr"/>
+                                                    <action selector="selectAddNote:" destination="HOT-Tz-TDK" eventType="touchUpInside" id="1YS-ih-VTZ"/>
                                                 </connections>
                                             </button>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1PG-cp-Fh5">
-                                                <rect key="frame" x="0.0" y="435" width="414" height="180"/>
+                                                <rect key="frame" x="0.0" y="469.33333333333337" width="414" height="180"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="180" id="GQ5-Me-g39"/>
                                                 </constraints>
@@ -469,7 +459,7 @@
                     <navigationItem key="navigationItem" id="ToL-ef-oOE">
                         <barButtonItem key="rightBarButtonItem" title="Home" id="5Ce-1F-b6K">
                             <connections>
-                                <segue destination="EoH-xn-tXl" kind="unwind" unwindAction="goHomeWithSegue:" id="OVP-7W-XgH"/>
+                                <action selector="selectHome:" destination="HOT-Tz-TDK" id="eyi-hg-DX5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -482,14 +472,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K2L-w9-WJ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="EoH-xn-tXl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="312" y="394"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="9i9-n0-HJR">
             <objects>
-                <viewController id="Wds-Yh-Hwk" customClass="MapViewController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="Wds-Yh-Hwk" customClass="MapViewController" customModule="ExThings" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bvD-MT-cbD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -601,7 +590,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JmI-hT-eOc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="483" y="-1250"/>
+            <point key="canvasLocation" x="1309" y="-1286"/>
         </scene>
         <!--ExPlaces-->
         <scene sceneID="KBI-zF-3Zi">
@@ -1540,11 +1529,10 @@
         <image name="icon_exSpecies" width="62" height="62"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ejJ-03-lLr"/>
-        <segue reference="l3u-QX-gFV"/>
-        <segue reference="kaZ-tB-afT"/>
-        <segue reference="8GW-rC-Z9q"/>
-        <segue reference="No2-Cg-KzM"/>
-        <segue reference="dbg-Pc-fIs"/>
+        <segue reference="BGJ-sS-jAK"/>
+        <segue reference="u2d-OI-sRv"/>
+        <segue reference="igg-AH-9Bf"/>
+        <segue reference="Mnh-xi-B5H"/>
+        <segue reference="JW5-ny-VTj"/>
     </inferredMetricsTieBreakers>
 </document>

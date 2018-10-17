@@ -11,7 +11,9 @@
 
 import UIKit
 
-class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource, ExSpeciesWidgetDelegate {
+class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource, ExSpeciesWidgetDelegate, Storyboarded {
+    
+    weak var delegate: ExSpeciesDetailViewControllerDelegate?
     
     @IBOutlet weak var descriptionTextView: UITextView!
     
@@ -45,6 +47,10 @@ class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource
     var similarSpecies: [ExSpecies] = []
     
     // MARK: - Lifecycle
+    
+    deinit {
+        delegate?.removed(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,7 +88,23 @@ class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource
             }
         }
     }
-
+    
+    // MARK: - Interaction
+    
+    @IBAction func selectAddNote(_ sender: UIButton) {
+        delegate?.didSelectAddNote(self, text: exSpecies?.notes)
+    }
+    
+    @IBAction func selectHome(_ sender: UIBarButtonItem) {
+        delegate?.didSelectHome(self)
+    }
+    
+    @IBAction func selectMap(_ sender: UIButton) {
+        if let habitat = exSpecies?.habitat[0] {
+            delegate?.didSelectMap(self, place: habitat)
+        }
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -95,42 +117,53 @@ class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource
                 similarSpeciesWidget.dataSource = self
                 similarSpeciesWidget.delegate = self
             }
-            
-        // Show map.
-        case "showMap":
-            if let destinationVC = segue.destination.content as? AnnotatedPlaceConsumer,
-                let habitat = exSpecies?.habitat[0] {
-                destinationVC.annotatedPlace = habitat
-            }
-            
-        // Show note editor.
-        case "showNote":
-            (segue.destination.content as? TextConsumer)?.text = exSpecies?.notes
-            
+
         default:
             break
             
         }
     }
     
-    @IBAction func selectSaveNote(segue: UIStoryboardSegue) {
-        if let noteEditorVC = segue.source.content as? NoteEditorViewController,
-            exSpecies != nil
-        {
-            exSpecies!.notes = noteEditorVC.text
-            exSpeciesService.save(exSpecies!)
-            updateViewFromData()
-        }
-    }
-    
-    // Show a new view that displays ExSpecies.
-    func show(viewUsing exSpecies: ExSpecies) {
-        guard let relatedExSpeciesDetailVC = storyboard?.instantiateViewController(withIdentifier: "exSpeciesDetailViewController") else { return }
-        if let newSpeciesVC = relatedExSpeciesDetailVC as? ExSpeciesDetailViewController {
-            newSpeciesVC.exSpecies = exSpecies
-        }
-        show(relatedExSpeciesDetailVC, sender: self)
-    }
+    // Deprecated prepare(for:sender:) bits, after introduction of Coordinator.
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //
+    //        switch segue.identifier {
+    //
+    //        // Show map.
+    //        case "showMap":
+    //            if let destinationVC = segue.destination.content as? AnnotatedPlaceConsumer,
+    //                let habitat = exSpecies?.habitat[0] {
+    //                destinationVC.annotatedPlace = habitat
+    //            }
+    //
+    //        // Show note editor.
+    //        case "showNote":
+    //            (segue.destination.content as? TextConsumer)?.text = exSpecies?.notes
+    //
+    //        default:
+    //            break
+    //
+    //        }
+    //    }
+    //
+    //    @IBAction func selectSaveNote(segue: UIStoryboardSegue) {
+    //        if let noteEditorVC = segue.source.content as? NoteEditorViewController,
+    //            exSpecies != nil
+    //        {
+    //            exSpecies!.notes = noteEditorVC.text
+    //            exSpeciesService.save(exSpecies!)
+    //            updateViewFromData()
+    //        }
+    //    }
+    //
+    //    // Show a new view that displays ExSpecies.
+    //    func show(viewUsing exSpecies: ExSpecies) {
+    //        guard let relatedExSpeciesDetailVC = storyboard?.instantiateViewController(withIdentifier: "exSpeciesDetailViewController") else { return }
+    //        if let newSpeciesVC = relatedExSpeciesDetailVC as? ExSpeciesDetailViewController {
+    //            newSpeciesVC.exSpecies = exSpecies
+    //        }
+    //        show(relatedExSpeciesDetailVC, sender: self)
+    //    }
     
     // MARK: - ExSpecies widget data source
     
@@ -145,7 +178,8 @@ class ExSpeciesDetailViewController: UIViewController, ExSpeciesWidgetDataSource
     // MARK: - ExSpecies widget delegate
     
     func widgetView(_ widgetView: ExSpeciesWidgetViewController, didSelect exSpecies: ExSpecies) {
-        show(viewUsing: exSpecies)
+        //show(viewUsing: exSpecies)
+        delegate?.didSelectSpecies(self, exSpecies: exSpecies)
     }
     
 }
@@ -163,4 +197,12 @@ extension ExSpeciesDetailViewController: ExThingConsumer {
             }
         }
     }
+}
+
+protocol ExSpeciesDetailViewControllerDelegate: AnyObject {
+    func removed(_ exSpeciesDetailViewController: ExSpeciesDetailViewController)
+    func didSelectAddNote(_ exSpeciesDetailViewController: ExSpeciesDetailViewController, text: String?)
+    func didSelectHome(_ exSpeciesDetailViewController: ExSpeciesDetailViewController)
+    func didSelectMap(_ exSpeciesDetailViewController: ExSpeciesDetailViewController, place: AnnotatedPlace)
+    func didSelectSpecies(_ exSpeciesDetailViewController: ExSpeciesDetailViewController, exSpecies: ExSpecies)
 }

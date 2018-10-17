@@ -8,7 +8,9 @@
 
 import UIKit
 
-class NoteEditorViewController: UIViewController, UITextViewDelegate {
+class NoteEditorViewController: UIViewController, UITextViewDelegate, Storyboarded {
+    
+    weak var delegate: NoteEditorViewControllerDelegate?
     
     @IBOutlet weak var noteTextView: UITextView! {
         didSet {
@@ -26,6 +28,10 @@ class NoteEditorViewController: UIViewController, UITextViewDelegate {
     }
     
     // MARK: - Lifecycle
+    
+    deinit {
+        delegate?.removed(self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,3 +60,7 @@ class NoteEditorViewController: UIViewController, UITextViewDelegate {
 }
 
 extension NoteEditorViewController: TextConsumer {}
+
+protocol NoteEditorViewControllerDelegate: AnyObject {
+    func removed(_ noteEditorViewController: NoteEditorViewController)
+}

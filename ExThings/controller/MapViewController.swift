@@ -11,7 +11,9 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, Storyboarded {
+    
+    weak var delegate: MapViewControllerDelegate?
     
     private enum Attribute {
         static let span = MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)
@@ -38,6 +40,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     private var annotations: [MKAnnotation] = []
 
     // MARK: - Lifecycle
+    
+    deinit {
+        delegate?.removed(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,4 +90,8 @@ extension MapViewController: AnnotatedPlaceConsumer {
             place = newValue
         }
     }
+}
+
+protocol MapViewControllerDelegate: AnyObject {
+    func removed(_ mapViewController: MapViewController)
 }

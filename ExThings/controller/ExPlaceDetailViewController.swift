@@ -10,7 +10,9 @@
 
 import UIKit
 
-class ExPlaceDetailViewController: UIViewController {
+class ExPlaceDetailViewController: UIViewController, Storyboarded {
+    
+    weak var delegate: ExPlaceDetailViewControllerDelegate?
     
     @IBOutlet weak var descriptionTextView: UITextView!
     
@@ -50,6 +52,10 @@ class ExPlaceDetailViewController: UIViewController {
     
     // MARK: - Lifecycle
     
+    deinit {
+        delegate?.removed(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,43 +93,71 @@ class ExPlaceDetailViewController: UIViewController {
         }
     }
     
+    // MARK: - Interaction
+    
+    @IBAction func selectAddNote(_ sender: UIButton) {
+        delegate?.didSelectAddNote(self, text: exPlace?.notes)
+    }
+    
+    @IBAction func selectHome(_ sender: UIBarButtonItem) {
+        delegate?.didSelectHome(self)
+    }
+    
+    @IBAction func selectMap(_ sender: UIButton) {
+        guard let place = nearestExPlace else { return }
+        delegate?.didSelectMap(self, place: place)
+    }
+    
+    @IBAction func selectNearestPlace(_ sender: UIButton) {
+        guard let place = nearestExPlace else { return }
+        delegate?.didSelectNearestPlace(self, exPlace: place)
+    }
+    
+    @IBAction func selectNearestSpecies(_ sender: UIButton) {
+        guard let species = nearestExSpecies else { return }
+        delegate?.didSelectNearestSpecies(self, exSpecies: species)
+    }
+    
     // MARK: - Navigation
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        switch segue.identifier {
-            
-        // Show ExPlace detail view.
-        case "showExPlaceDetail":
-            (segue.destination.content as? ExPlaceConsumer)?.exPlace = nearestExPlace
-            
-        // Show ExSpecies detail view.
-        case "showExSpeciesDetail":
-            (segue.destination.content as? ExSpeciesConsumer)?.exSpecies = nearestExSpecies
-            
-        // Show map view.
-        case "showMap":
-            (segue.destination.content as? AnnotatedPlaceConsumer)?.annotatedPlace = nearestExPlace
-            
-        // Show note editor.
-        case "showNote":
-            (segue.destination.content as? TextConsumer)?.text = exPlace?.notes
-            
-        default:
-            break
-        }
-    }
-    
-    @IBAction func selectSaveNote(segue: UIStoryboardSegue) {
-        
-        if let noteEditorVC = segue.source as? TextConsumer,
-            exPlace != nil
-        {
-            exPlace!.notes = noteEditorVC.text
-            exPlacesService.save(exPlace!)
-            updateViewFromData()
-        }
-    }
+    // Deprecated with introduction of Coordinator.
+    // Left for reference… or perhaps… nostalgia.
+    //
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //
+    //        switch segue.identifier {
+    //
+    //        // Show ExPlace detail view.
+    //        case "showExPlaceDetail":
+    //            (segue.destination.content as? ExPlaceConsumer)?.exPlace = nearestExPlace
+    //
+    //        // Show ExSpecies detail view.
+    //        case "showExSpeciesDetail":
+    //            (segue.destination.content as? ExSpeciesConsumer)?.exSpecies = nearestExSpecies
+    //
+    //        // Show map view.
+    //        case "showMap":
+    //            (segue.destination.content as? AnnotatedPlaceConsumer)?.annotatedPlace = nearestExPlace
+    //
+    //        // Show note editor.
+    //        case "showNote":
+    //            (segue.destination.content as? TextConsumer)?.text = exPlace?.notes
+    //
+    //        default:
+    //            break
+    //        }
+    //    }
+    //
+    //    @IBAction func selectSaveNote(segue: UIStoryboardSegue) {
+    //
+    //        if let noteEditorVC = segue.source as? TextConsumer,
+    //            exPlace != nil
+    //        {
+    //            exPlace!.notes = noteEditorVC.text
+    //            exPlacesService.save(exPlace!)
+    //            updateViewFromData()
+    //        }
+    //    }
     
 }
 
@@ -151,4 +185,13 @@ extension ExPlaceDetailViewController: ExThingConsumer {
             }
         }
     }
+}
+
+protocol ExPlaceDetailViewControllerDelegate: AnyObject {
+    func didSelectAddNote(_ exPlaceDetailViewController: ExPlaceDetailViewController, text: String?)
+    func didSelectHome(_ exPlaceDetailViewController: ExPlaceDetailViewController)
+    func didSelectMap(_ exPlaceDetailViewController: ExPlaceDetailViewController, place: AnnotatedPlace)
+    func didSelectNearestPlace(_ exPlaceDetailViewController: ExPlaceDetailViewController, exPlace: ExPlace)
+    func didSelectNearestSpecies(_ exPlaceDetailViewController: ExPlaceDetailViewController, exSpecies: ExSpecies)
+    func removed(_ exPlaceDetailViewController: ExPlaceDetailViewController)
 }

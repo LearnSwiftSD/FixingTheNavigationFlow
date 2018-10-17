@@ -10,7 +10,9 @@
 
 import UIKit
 
-class SettingsViewController: UITableViewController {
+class SettingsViewController: UITableViewController, Storyboarded {
+    
+    weak var delegate: SettingsViewControllerDelegate?
     
     @IBOutlet weak var navigationTableViewCell: UITableViewCell!
     
@@ -23,6 +25,10 @@ class SettingsViewController: UITableViewController {
                             Preferences.Container.tabBarController]
     
     // MARK: - Lifecycle
+    
+    deinit {
+        delegate?.removed(self)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         if let selectedRow = containerChoices.firstIndex(of: Preferences.container) {
@@ -64,4 +70,8 @@ class SettingsViewController: UITableViewController {
         }
     }
 
+}
+
+protocol SettingsViewControllerDelegate: AnyObject {
+    func removed(_ settingsViewController: SettingsViewController)
 }

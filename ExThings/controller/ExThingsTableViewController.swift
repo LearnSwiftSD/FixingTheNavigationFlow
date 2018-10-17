@@ -10,7 +10,9 @@
 
 import UIKit
 
-class ExThingsTableViewController: UITableViewController {
+class ExThingsTableViewController: UITableViewController, Storyboarded {
+    
+    weak var delegate: ExThingsTableViewControllerDelegate?
     
     // MARK: - Model - Services
     
@@ -45,6 +47,10 @@ class ExThingsTableViewController: UITableViewController {
     }
 
     // MARK: - Lifecycle
+    
+    deinit {
+        delegate?.removed(self)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -85,33 +91,53 @@ class ExThingsTableViewController: UITableViewController {
 
         return cell
     }
+    
+    // MARK: - Interaction
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedExThing = exThingsDataSource[indexPath.section][indexPath.row]
+        delegate?.exThingsTableViewController(self, didSelectExThing: selectedExThing)
+    }
+    
+    @IBAction func selectSettings(_ sender: UIBarButtonItem) {
+        delegate?.didSelectSettings(self)
+    }
+    
 
     // MARK: - Navigation
     
-    // Navigation stub for an unwind segue.
-    @IBAction func goHome(segue: UIStoryboardSegue) {
-        // Nothing needs doing, but it's good to be home.
-    }
+    // Deprecated. Left for comparison.
+    //
+    //    // Navigation stub for an unwind segue.
+    //    @IBAction func goHome(segue: UIStoryboardSegue) {
+    //        // Nothing needs doing, but it's good to be home.
+    //    }
+    //
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if let _ = sender as? UITableViewCell,
+    //            let selectedIndex = tableView.indexPathForSelectedRow
+    //        {
+    //            let selectedExThing = exThingsDataSource[selectedIndex.section][selectedIndex.row]
+    //            switch selectedExThing {
+    //
+    //            // Show ExPlace detail view.
+    //            case let selectedExPlace as ExPlace:
+    //                (segue.destination as? ExPlaceConsumer)?.exPlace = selectedExPlace
+    //
+    //            // Show ExSpecies detail view.
+    //            case let selectedExSpecies as ExSpecies:
+    //                (segue.destination as? ExSpeciesConsumer)?.exSpecies = selectedExSpecies
+    //
+    //            default :
+    //                break
+    //            }
+    //        }
+    //    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let _ = sender as? UITableViewCell,
-            let selectedIndex = tableView.indexPathForSelectedRow
-        {
-            let selectedExThing = exThingsDataSource[selectedIndex.section][selectedIndex.row]
-            switch selectedExThing {
-                
-            // Show ExPlace detail view.
-            case let selectedExPlace as ExPlace:
-                (segue.destination as? ExPlaceConsumer)?.exPlace = selectedExPlace
-                
-            // Show ExSpecies detail view.
-            case let selectedExSpecies as ExSpecies:
-                (segue.destination as? ExSpeciesConsumer)?.exSpecies = selectedExSpecies
-                
-            default :
-                break
-            }
-        }
-    }
-    
+}
+
+protocol ExThingsTableViewControllerDelegate: AnyObject {
+    func didSelectSettings(_ exThingsTableViewController: ExThingsTableViewController)
+    func exThingsTableViewController(_ exThingsTableViewController: ExThingsTableViewController, didSelectExThing exThing: ExThing)
+    func removed(_ exThingsTableViewController: ExThingsTableViewController)
 }
